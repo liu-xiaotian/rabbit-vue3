@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { loginAPI } from '@/apis/user';
 import { ElMessage } from 'element-plus'
 import 'element-plus/theme-chalk/el-message.css'
 import { useRouter } from 'vue-router';
@@ -32,7 +31,7 @@ const rules={
 
 // 获取表单实例，同意做校验
 const formRef = ref(null)
-const doLogin = async ()=>{
+const doLogin = ()=>{
   const {account, password} = userInfo.value
   formRef.value.validate(async (value)=>{
     console.log(value);
