@@ -27,13 +27,15 @@ httpInstance.interceptors.response.use(res => res.data, e=>{
   const useStore = useUserStore()
   ElMessage({
     type:'warning',
-    message: e.response.data.msg
+    message: e.response.data.message
   })
   //401 token失效处理
   //1. 清除本地用户数据
-  useStore.clearUserInfo()
   //2. 跳转到登录页
-  router.push('/login')
+  if(e.response.status === 401){
+    useStore.clearUserInfo()
+    router.push('/login')
+  }
   return Promise.reject(e)
 })
 
