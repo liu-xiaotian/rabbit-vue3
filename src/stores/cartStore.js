@@ -28,6 +28,11 @@ export const useCartStore = defineStore('cart', ()=>{
       const item = cartList.value.find((item) => item.skuId === skuId)
       item.selected = selected
     }
+    // 全选
+    const isAll = computed(() => cartList.value.every((item) => item.selected))
+    const allCheck = (selected) =>{
+      cartList.value.forEach(item => item.selected = selected)
+    }
     // 计算属性
     const allCount = computed(()=> cartList.value.reduce((a,c) => a+c.count, 0))
     const allPrice = computed(() => cartList.value.reduce((a,c) => a+c.count*c.price,0))
@@ -36,8 +41,10 @@ export const useCartStore = defineStore('cart', ()=>{
       cartList,
       allCount,
       allPrice,
+      isAll,
       addCart,
       delCart,
-      singleCheck
+      singleCheck,
+      allCheck
     }
   })
