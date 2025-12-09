@@ -1,5 +1,5 @@
 <script setup>
-import {useCategoryStore} from '@/stores/category'
+import {useCategoryStore} from '@/stores/categoryStore'
 import HeaderCart from './HeaderCart.vue';
 // 使用 pinia数据
 const categoryStore = useCategoryStore()

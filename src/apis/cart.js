@@ -1,6 +1,5 @@
 //封装购物车相关接口
 import request from '@/utils/http';
-import { couch } from 'globals';
 export const insertCartAPI = ({skuId, count})=>{
   return request({
     url:'/member/cart',
@@ -15,5 +14,15 @@ export const insertCartAPI = ({skuId, count})=>{
 export const findNewCartListAPI = ()=>{
   return request({
     url:'/member/cart'
+  })
+}
+
+export const delCartAPI = (ids)=>{
+  return request({
+    url:'/member/cart',
+    method:'DELETE',
+    data:{
+      ids
+    }
   })
 }
