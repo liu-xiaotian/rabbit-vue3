@@ -20,7 +20,7 @@ const params = ref({
 })
 const getOrderList = async ()=>{
   const res = await getUserOrder(params.value)
-  orderList.value = res.result.item
+  orderList.value = res.result.items
 }
 
 onMounted(()=> getOrderList())
